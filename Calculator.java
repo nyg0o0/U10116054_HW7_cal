@@ -215,6 +215,18 @@ public class Calculator extends Application{
 			calResult.setText(calResult.getText()+"3");
 		}
 	});	
+	// num 0
+	btn[25].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).length()>1){
+			calResult.setText(calResult.getText()+"0");
+		}
+	});
+	// .	
+	btn[26].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).indexOf('.')==-1){
+			calResult.setText(calResult.getText()+".");
+		}
+	});	
 		
     // Create a scene and place it in the stage
     Scene scene = new Scene(pane, 280 ,325); // Set the stage size
