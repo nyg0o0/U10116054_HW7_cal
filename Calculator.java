@@ -291,16 +291,30 @@ public class Calculator extends Application{
 	});	
 	// =
 	btn[24].setOnAction((ActionEvent event) -> {
+		String tempString = "";
 		if( (calResult.getText()).indexOf('+')!=-1 || (calResult.getText()).indexOf('-')!=-1 ||
 			(calResult.getText()).indexOf('*')!=-1 || (calResult.getText()).indexOf('/')!=-1){
-			String temp = calResult.getText().replace('+',' ');
-			temp = temp.replace('-',' ');
-			String[] tokenForAddSub = temp.split(" ");
-			for(int i = 0; i < tokenForAddSub.length; i++){
-				if(tokenForAddSub[i].indexOf("*")!=-1){
-					System.out.println("test");
+			tempString = calResult.getText();
+			String[] tokenForAdd = tempString.split("\\+");
+			for(int i = 0; i < tokenForAdd.length; i++){
+				
+				if( tokenForAdd[i].indexOf("*")!=-1 ){
+					tokenForAdd[i] = "";
+					String[] tokenForMul = tokenForAdd[i].split("\\*");
+					double temp=1;
+					for(int j = 0; j < tokenForMul.length; j++){
+						temp = temp * 5;
+						tokenForAdd[i] = String.valueOf(temp);
+					}
+					
 				}
-				System.out.println(tokenForAddSub[i]);
+				else if ( tokenForAdd[i].indexOf("/")!=-1 ){
+					
+				}
+				else{
+					
+				}
+				System.out.println(tokenForAdd[i]);
 			}
 		}
 	});		
