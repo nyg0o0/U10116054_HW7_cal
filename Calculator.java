@@ -253,7 +253,42 @@ public class Calculator extends Application{
 			}
 		}
 	});	
-		
+	// +
+	btn[27].setOnAction((ActionEvent event) -> {
+		if( (calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='+' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='-' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='*' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='/'	){
+			calResult.setText(calResult.getText()+"+");
+		}
+	});	
+	// -
+	btn[23].setOnAction((ActionEvent event) -> {
+		if( (calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='+' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='-' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='*' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='/'	){
+			calResult.setText(calResult.getText()+"-");
+		}
+	});		
+	// *
+	btn[18].setOnAction((ActionEvent event) -> {
+		if( (calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='+' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='-' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='*' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='/'	){
+			calResult.setText(calResult.getText()+"*");
+		}
+	});		
+	// /
+	btn[13].setOnAction((ActionEvent event) -> {
+		if( (calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='+' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='-' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='*' &&
+			(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='/'	){
+			calResult.setText(calResult.getText()+"/");
+		}
+	});			
     // Create a scene and place it in the stage
     Scene scene = new Scene(pane, 280 ,325); // Set the stage size
     primaryStage.setTitle("U10116054"); // Set the stage title
