@@ -227,6 +227,32 @@ public class Calculator extends Application{
 			calResult.setText(calResult.getText()+".");
 		}
 	});	
+	// C
+	btn[7].setOnAction((ActionEvent event) -> {
+		calResult.setText("0");
+	});		
+	// <-
+	btn[5].setOnAction((ActionEvent event) -> {
+		// delete the numbers from the end when there are not empy and doesn't equl to zero
+		if((calResult.getText()).length()!=0 && (calResult.getText()).equals("0")==false){
+			calResult.setText(calResult.getText().substring(0,(calResult.getText()).length()-1));
+		}
+		// if the calResult is empty, fill the zero to the textarea
+		if((calResult.getText()).length()==0){
+			calResult.setText("0");
+		}
+	});	
+	// กำ
+	btn[8].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")==false){
+			if( ( (calResult.getText()).charAt(0))!='-'){
+				calResult.setText("-" + calResult.getText());
+			}
+			else{
+				calResult.setText((calResult.getText()).substring(1,(calResult.getText()).length()));
+			}
+		}
+	});	
 		
     // Create a scene and place it in the stage
     Scene scene = new Scene(pane, 280 ,325); // Set the stage size
