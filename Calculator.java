@@ -7,6 +7,8 @@ import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
 
 public class Calculator extends Application{
+	// Creat a textarea to perform caculator result
+    TextArea calResult = new TextArea();
   public void start(Stage primaryStage){
 
     // Creat a new pane
@@ -63,8 +65,7 @@ public class Calculator extends Application{
      }
    }
 
-    // Creat a textarea to perform caculator result
-    TextArea calResult = new TextArea();
+
     pane.getChildren().add(calResult);
     calResult.setPrefSize((X_WIDTH * 5 + X_PADDING * 4),Y_HEIGHT * 2);
     calResult.setLayoutX(10);
@@ -323,5 +324,9 @@ public class Calculator extends Application{
     primaryStage.setTitle("U10116054"); // Set the stage title
     primaryStage.setScene(scene); // Place the scene in the stage
     primaryStage.show(); // Display the stage
+  }
+  
+  public void euals(){
+	  
   }
 }
