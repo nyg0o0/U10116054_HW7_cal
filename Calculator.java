@@ -291,11 +291,17 @@ public class Calculator extends Application{
 	});	
 	// =
 	btn[24].setOnAction((ActionEvent event) -> {
-		if( (calResult.getText()).indexOf('+')!=-1 ||
-			(calResult.getText()).indexOf('-')!=-1 ||
-			(calResult.getText()).indexOf('*')!=-1 ||
-			(calResult.getText()).indexOf('/')!=-1){
-			
+		if( (calResult.getText()).indexOf('+')!=-1 || (calResult.getText()).indexOf('-')!=-1 ||
+			(calResult.getText()).indexOf('*')!=-1 || (calResult.getText()).indexOf('/')!=-1){
+			String temp = calResult.getText().replace('+',' ');
+			temp = temp.replace('-',' ');
+			String[] tokenForAddSub = temp.split(" ");
+			for(int i = 0; i < tokenForAddSub.length; i++){
+				if(tokenForAddSub[i].indexOf("*")!=-1){
+					System.out.println("test");
+				}
+				System.out.println(tokenForAddSub[i]);
+			}
 		}
 	});		
     // Create a scene and place it in the stage
