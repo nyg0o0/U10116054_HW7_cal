@@ -4,9 +4,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.event.ActionEvent;
 
-
-public classCalculator extends Application{
+public class Calculator extends Application{
   public void start(Stage primaryStage){
 
     // Creat a new pane
@@ -70,7 +70,8 @@ public classCalculator extends Application{
     calResult.setLayoutX(10);
     calResult.setLayoutY(40);
     calResult.setEditable(false);
- 
+	calResult.setText("0");
+	
     // MenuBar
     MenuBar menu = new MenuBar(); 
     final int MENU_BTN = 3;
@@ -125,6 +126,96 @@ public classCalculator extends Application{
     }
     pane.getChildren().add(menu);
 
+	/* Num btns 
+		Condition 1 :	if there is equal to zero (empty calResult by automatic filling zero)
+						just add to the num to the calResult
+		Condition 2 :	if there is not equal to zero 
+						add the num to the tail of calResult string
+		
+		same way for 0 ~ 9
+	*/
+	// num 7
+	btn[10].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("7");
+		}
+		else{
+			calResult.setText(calResult.getText()+"7");
+		}
+	});	
+	// num 8
+	btn[11].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("8");
+		}
+		else{
+			calResult.setText(calResult.getText()+"8");
+		}
+	});	
+	// num 9
+	btn[12].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("9");
+		}
+		else{
+			calResult.setText(calResult.getText()+"9");
+		}
+	});	
+	// num 4
+	btn[15].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("4");
+		}
+		else{
+			calResult.setText(calResult.getText()+"4");
+		}
+	});	
+	// num 5
+	btn[16].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("5");
+		}
+		else{
+			calResult.setText(calResult.getText()+"5");
+		}
+	});	
+	// num 6
+	btn[17].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("6");
+		}
+		else{
+			calResult.setText(calResult.getText()+"6");
+		}
+	});	
+	// num 1
+	btn[20].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("1");
+		}
+		else{
+			calResult.setText(calResult.getText()+"1");
+		}
+	});	
+	// num 2
+	btn[21].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("2");
+		}
+		else{
+			calResult.setText(calResult.getText()+"2");
+		}
+	});	
+	// num 3
+	btn[22].setOnAction((ActionEvent event) -> {
+		if((calResult.getText()).equals("0")){
+			calResult.setText("3");
+		}
+		else{
+			calResult.setText(calResult.getText()+"3");
+		}
+	});	
+		
     // Create a scene and place it in the stage
     Scene scene = new Scene(pane, 280 ,325); // Set the stage size
     primaryStage.setTitle("U10116054"); // Set the stage title
