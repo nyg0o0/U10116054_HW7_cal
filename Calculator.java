@@ -216,7 +216,7 @@ public class Calculator extends Application{
 		});	
 		// num 0
 		btn[25].setOnAction((ActionEvent event) -> {
-			if((calResult.getText()).length()>1){
+			if((calResult.getText()).length()>1 || !(calResult.getText()).equals("0")){
 				calResult.setText(calResult.getText()+"0");
 			}
 		});
@@ -292,30 +292,62 @@ public class Calculator extends Application{
 		btn[24].setOnAction((ActionEvent event) -> {
 			Calculator obj1 = new Calculator();
 			String tempString = "";
-			if( (calResult.getText()).indexOf('+')!=-1 || (calResult.getText()).indexOf('-')!=-1 ||
-				(calResult.getText()).indexOf('*')!=-1 || (calResult.getText()).indexOf('/')!=-1){
-				tempString = calResult.getText();
-				String[] tokenForAdd = tempString.split("\\+");
-				for(int i = 0; i < tokenForAdd.length; i++){
-					
-					if( tokenForAdd[i].indexOf("*")!=-1 ){
-						tokenForAdd[i] = "";
-						String[] tokenForMul = tokenForAdd[i].split("\\*");
-						for(int j = 0; j < tokenForMul.length; j++){
-							double temp = getResult();
-							setResult(temp);
-							System.out.println(tokenForMul[0]);
-							//tokenForAdd[i] = String.valueOf(getResult());
+			if( (calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='+' &&
+				(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='-' &&
+				(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='*' &&
+				(calResult.getText()) .charAt( (calResult.getText()).length()-1 )!='/'	){
+				if( (calResult.getText()).indexOf('+')!=-1 || (calResult.getText()).indexOf('-')!=-1 ||
+					(calResult.getText()).indexOf('*')!=-1 || (calResult.getText()).indexOf('/')!=-1){
+					tempString = calResult.getText();
+					String[] tokenForAdd = tempString.split("\\+");	// add part
+					for(int i = 0; i < tokenForAdd.length; i++){
+						if( tokenForAdd[i].indexOf("*")!=-1 ){	// if there is a * , do first
+							String[] tokenForMul = tokenForAdd[i].split("\\*");
+							double temp = 0.0;
+							for(int j = 0; j < tokenForMul.length; j++){
+								if(j==0){
+									temp = Double.parseDouble(tokenForMul[j]);
+								}
+								else{
+									temp = temp * Double.parseDouble(tokenForMul[j]);
+								}
+								tokenForAdd[i] = String.valueOf(temp);
+								//setResult( getResult() * Double.parseDouble(tokenForMul[j]) );
+								//System.out.println(tokenForMul[j]);
+								//tokenForAdd[i] = String.valueOf(getResult());
+							}
 						}
+						else if( tokenForAdd[i].indexOf("/")!=-1 ){	// if there is a * , do first
+							String[] tokenForDiv = tokenForAdd[i].split("\\/");
+							double temp = 0.0;
+							for(int j = 0; j < tokenForDiv.length; j++){
+								if(j==0){
+									temp = Double.parseDouble(tokenForDiv[j]);
+								}
+								else{
+									temp = temp / Double.parseDouble(tokenForDiv[j]);
+								}
+								tokenForAdd[i] = String.valueOf(temp);
+							}
+						}
+						else{	// if there is a -, do last
+							String[] tokenForSub = tokenForAdd[i].split("\\-");
+							double temp = 0.0;
+							for(int j = 0; j < tokenForSub.length; j++){
+								if( j==0 ){
+									temp = Double.parseDouble(tokenForSub[j]);
+								}
+								else{
+									temp = temp - Double.parseDouble(tokenForSub[j]);
+								}
+								//System.out.println(tokenForMul[j]);
+								tokenForAdd[i] = String.valueOf(temp);
+							}						
+						}
+						setResult(1);	// clear the temp result
+						System.out.println(tokenForAdd[i]);
 						
 					}
-					else if ( tokenForAdd[i].indexOf("/")!=-1 ){
-						
-					}
-					else{
-						
-					}
-					System.out.println(tokenForAdd[i]);
 				}
 			}
 		});		
@@ -325,10 +357,4 @@ public class Calculator extends Application{
 		primaryStage.setScene(scene); // Place the scene in the stage
 		primaryStage.show(); // Display the stage
 	}
-	public void setResult( double tempResult ){
-		this.tempResult = tempResult;
-	}
-	public double getResult(){
-		return tempResult;
-	}	
 }
